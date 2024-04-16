@@ -1,0 +1,386 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<hierarchy rotation="0">
+    <node index="0" text="" resource-id="" class="android.widget.FrameLayout" package="com.xingin.xhs" content-desc=""
+          checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false"
+          scrollable="false" long-clickable="false" password="false" selected="false" bounds="[0,0][1080,2400]">
+        <node index="0" text="" resource-id="com.xingin.xhs:id/i9w" class="android.widget.FrameLayout"
+              package="com.xingin.xhs" content-desc="" checkable="false" checked="false" clickable="false"
+              enabled="true" focusable="false" focused="false" scrollable="false" long-clickable="false"
+              password="false" selected="false" bounds="[0,0][1080,2400]">
+            <node index="0" text="" resource-id="" class="android.widget.LinearLayout" package="com.xingin.xhs"
+                  content-desc="" checkable="false" checked="false" clickable="false" enabled="true" focusable="false"
+                  focused="false" scrollable="false" long-clickable="false" password="false" selected="false"
+                  bounds="[0,0][1080,2358]">
+                <node index="0" text="" resource-id="" class="android.widget.FrameLayout" package="com.xingin.xhs"
+                      content-desc="" checkable="false" checked="false" clickable="false" enabled="true"
+                      focusable="false" focused="false" scrollable="false" long-clickable="false" password="false"
+                      selected="false" bounds="[0,0][1080,2358]">
+                    <node index="0" text="" resource-id="com.xingin.xhs:id/ct" class="android.widget.LinearLayout"
+                          package="com.xingin.xhs" content-desc="" checkable="false" checked="false" clickable="false"
+                          enabled="true" focusable="false" focused="false" scrollable="false" long-clickable="false"
+                          password="false" selected="false" bounds="[0,0][1080,2358]">
+                        <node index="0" text="" resource-id="android:id/content" class="android.widget.FrameLayout"
+                              package="com.xingin.xhs" content-desc="" checkable="false" checked="false"
+                              clickable="false" enabled="true" focusable="false" focused="false" scrollable="false"
+                              long-clickable="false" password="false" selected="false" bounds="[0,0][1080,2358]">
+                            <node index="0" text="" resource-id="com.xingin.xhs:id/g2h"
+                                  class="android.widget.FrameLayout" package="com.xingin.xhs" content-desc=""
+                                  checkable="false" checked="false" clickable="false" enabled="true" focusable="false"
+                                  focused="false" scrollable="false" long-clickable="false" password="false"
+                                  selected="false" bounds="[0,0][1080,2358]">
+                                <node index="0" text="" resource-id="com.xingin.xhs:id/g1s"
+                                      class="android.widget.RelativeLayout" package="com.xingin.xhs" content-desc=""
+                                      checkable="false" checked="false" clickable="false" enabled="true"
+                                      focusable="true" focused="false" scrollable="false" long-clickable="false"
+                                      password="false" selected="false" bounds="[0,0][1080,2358]">
+                                    <node index="0" text="" resource-id="com.xingin.xhs:id/in4"
+                                          class="android.widget.FrameLayout" package="com.xingin.xhs" content-desc=""
+                                          checkable="false" checked="false" clickable="false" enabled="true"
+                                          focusable="false" focused="false" scrollable="false" long-clickable="false"
+                                          password="false" selected="false" bounds="[0,0][1080,237]">
+                                        <node index="0" text="" resource-id="com.xingin.xhs:id/in8"
+                                              class="android.widget.LinearLayout" package="com.xingin.xhs"
+                                              content-desc="" checkable="false" checked="false" clickable="true"
+                                              enabled="true" focusable="true" focused="false" scrollable="false"
+                                              long-clickable="false" password="false" selected="false"
+                                              bounds="[0,0][1080,237]">
+                                            <node index="0" text="" resource-id="com.xingin.xhs:id/fjw"
+                                                  class="android.view.View" package="com.xingin.xhs" content-desc=""
+                                                  checkable="false" checked="false" clickable="false" enabled="true"
+                                                  focusable="false" focused="false" scrollable="false"
+                                                  long-clickable="false" password="false" selected="false"
+                                                  bounds="[0,0][1080,90]"/>
+                                            <node index="1" text="" resource-id="com.xingin.xhs:id/in4"
+                                                  class="android.widget.RelativeLayout" package="com.xingin.xhs"
+                                                  content-desc="" checkable="false" checked="false" clickable="false"
+                                                  enabled="true" focusable="false" focused="false" scrollable="false"
+                                                  long-clickable="false" password="false" selected="false"
+                                                  bounds="[0,90][1080,237]">
+                                                <node index="0" text="" resource-id="com.xingin.xhs:id/yu"
+                                                      class="android.widget.LinearLayout" package="com.xingin.xhs"
+                                                      content-desc="" checkable="false" checked="false"
+                                                      clickable="false" enabled="true" focusable="false" focused="false"
+                                                      scrollable="false" long-clickable="false" password="false"
+                                                      selected="false" bounds="[0,90][236,237]">
+                                                    <node index="0" text="" resource-id="com.xingin.xhs:id/yz"
+                                                          class="android.widget.Button" package="com.xingin.xhs"
+                                                          content-desc="返回" checkable="false" checked="false"
+                                                          clickable="true" enabled="true" focusable="true"
+                                                          focused="false" scrollable="false" long-clickable="false"
+                                                          password="false" selected="false" bounds="[0,114][78,213]"/>
+                                                    <node index="1" text="" resource-id="com.xingin.xhs:id/x_"
+                                                          class="android.widget.FrameLayout" package="com.xingin.xhs"
+                                                          content-desc="" checkable="false" checked="false"
+                                                          clickable="false" enabled="true" focusable="false"
+                                                          focused="false" scrollable="false" long-clickable="false"
+                                                          password="false" selected="false" bounds="[78,90][236,237]">
+                                                        <node index="0" text=""
+                                                              resource-id="com.xingin.xhs:id/avatarLayout"
+                                                              class="android.view.View" package="com.xingin.xhs"
+                                                              content-desc="" checkable="false" checked="false"
+                                                              clickable="false" enabled="true" focusable="false"
+                                                              focused="false" scrollable="false" long-clickable="false"
+                                                              password="false" selected="false"
+                                                              bounds="[78,90][236,237]"/>
+                                                    </node>
+                                                </node>
+                                                <node index="1" text="" resource-id="com.xingin.xhs:id/e_d"
+                                                      class="android.widget.Button" package="com.xingin.xhs"
+                                                      content-desc="作者,饿魔的部屋" checkable="false" checked="false"
+                                                      clickable="false" enabled="true" focusable="false" focused="false"
+                                                      scrollable="false" long-clickable="false" password="false"
+                                                      selected="false" bounds="[236,141][752,186]">
+                                                    <node index="0" text="饿魔的部屋"
+                                                          resource-id="com.xingin.xhs:id/nickNameTV"
+                                                          class="android.widget.TextView" package="com.xingin.xhs"
+                                                          content-desc="" checkable="false" checked="false"
+                                                          clickable="false" enabled="true" focusable="false"
+                                                          focused="false" scrollable="false" long-clickable="false"
+                                                          password="false" selected="false"
+                                                          bounds="[236,141][431,186]"/>
+                                                </node>
+                                                <node index="2" text="关注" resource-id="com.xingin.xhs:id/followTV"
+                                                      class="android.widget.TextView" package="com.xingin.xhs"
+                                                      content-desc="" checkable="false" checked="false" clickable="true"
+                                                      enabled="true" focusable="true" focused="false" scrollable="false"
+                                                      long-clickable="false" password="false" selected="false"
+                                                      bounds="[778,132][946,195]"/>
+                                                <node index="3" text="" resource-id="com.xingin.xhs:id/moreOperateIV"
+                                                      class="android.widget.Button" package="com.xingin.xhs"
+                                                      content-desc="分享" checkable="false" checked="false"
+                                                      clickable="true" enabled="true" focusable="true" focused="false"
+                                                      scrollable="false" long-clickable="false" password="false"
+                                                      selected="false" bounds="[946,105][1062,221]"/>
+                                            </node>
+                                        </node>
+                                    </node>
+                                    <node index="1" text="" resource-id="com.xingin.xhs:id/g2i"
+                                          class="android.view.View" package="com.xingin.xhs" content-desc=""
+                                          checkable="false" checked="false" clickable="false" enabled="true"
+                                          focusable="false" focused="false" scrollable="false" long-clickable="false"
+                                          password="false" selected="false" bounds="[0,0][1080,90]"/>
+                                    <node index="2" text="" resource-id="com.xingin.xhs:id/fve"
+                                          class="android.view.ViewGroup" package="com.xingin.xhs" content-desc=""
+                                          checkable="false" checked="false" clickable="false" enabled="true"
+                                          focusable="true" focused="false" scrollable="false" long-clickable="false"
+                                          password="false" selected="false" bounds="[0,237][1080,2358]">
+                                        <node index="0" text="" resource-id="com.xingin.xhs:id/fvh"
+                                              class="android.widget.LinearLayout" package="com.xingin.xhs"
+                                              content-desc="" checkable="false" checked="false" clickable="false"
+                                              enabled="true" focusable="false" focused="false" scrollable="false"
+                                              long-clickable="false" password="false" selected="false"
+                                              bounds="[0,237][1080,2358]">
+                                            <node index="0" text="" resource-id="com.xingin.xhs:id/dk2"
+                                                  class="android.widget.FrameLayout" package="com.xingin.xhs"
+                                                  content-desc="" checkable="false" checked="false" clickable="false"
+                                                  enabled="true" focusable="false" focused="false" scrollable="false"
+                                                  long-clickable="false" password="false" selected="false"
+                                                  bounds="[0,237][1080,1750]">
+                                                <node index="0" text=""
+                                                      resource-id="com.xingin.xhs:id/noteContentLayout"
+                                                      class="android.widget.LinearLayout" package="com.xingin.xhs"
+                                                      content-desc="" checkable="false" checked="false"
+                                                      clickable="false" enabled="true" focusable="false" focused="false"
+                                                      scrollable="false" long-clickable="false" password="false"
+                                                      selected="false" bounds="[0,237][1080,1750]">
+                                                    <node index="0" text="" resource-id=""
+                                                          class="android.widget.FrameLayout" package="com.xingin.xhs"
+                                                          content-desc="图片,第6张,共 8张,双指左划或右划即可查看更多内容" checkable="false"
+                                                          checked="false" clickable="false" enabled="true"
+                                                          focusable="false" focused="false" scrollable="false"
+                                                          long-clickable="false" password="false" selected="false"
+                                                          bounds="[0,237][1080,1677]">
+                                                        <node index="0" text="" resource-id="com.xingin.xhs:id/cbh"
+                                                              class="android.widget.FrameLayout"
+                                                              package="com.xingin.xhs" content-desc="" checkable="false"
+                                                              checked="false" clickable="false" enabled="true"
+                                                              focusable="false" focused="false" scrollable="false"
+                                                              long-clickable="false" password="false" selected="false"
+                                                              bounds="[0,237][1080,1677]"/>
+                                                        <node index="1" text="" resource-id="com.xingin.xhs:id/dky"
+                                                              class="androidx.recyclerview.widget.RecyclerView"
+                                                              package="com.xingin.xhs" content-desc="" checkable="false"
+                                                              checked="false" clickable="false" enabled="true"
+                                                              focusable="true" focused="false" scrollable="true"
+                                                              long-clickable="false" password="false" selected="false"
+                                                              bounds="[0,237][1080,1677]">
+                                                            <node index="1" text="" resource-id=""
+                                                                  class="android.widget.FrameLayout"
+                                                                  package="com.xingin.xhs" content-desc=""
+                                                                  checkable="false" checked="false" clickable="false"
+                                                                  enabled="true" focusable="false" focused="false"
+                                                                  scrollable="false" long-clickable="false"
+                                                                  password="false" selected="false"
+                                                                  bounds="[0,237][1080,1677]">
+                                                                <node index="0" text=""
+                                                                      resource-id="com.xingin.xhs:id/gga"
+                                                                      class="android.widget.FrameLayout"
+                                                                      package="com.xingin.xhs" content-desc=""
+                                                                      checkable="false" checked="false"
+                                                                      clickable="false" enabled="true" focusable="false"
+                                                                      focused="false" scrollable="false"
+                                                                      long-clickable="false" password="false"
+                                                                      selected="false" bounds="[0,237][1080,1677]">
+                                                                    <node index="0" text=""
+                                                                          resource-id="com.xingin.xhs:id/gg_"
+                                                                          class="android.widget.ImageView"
+                                                                          package="com.xingin.xhs" content-desc=""
+                                                                          checkable="false" checked="false"
+                                                                          clickable="false" enabled="true"
+                                                                          focusable="false" focused="false"
+                                                                          scrollable="false" long-clickable="false"
+                                                                          password="false" selected="false"
+                                                                          bounds="[0,237][1080,1677]"/>
+                                                                    <node index="1" text=""
+                                                                          resource-id="com.xingin.xhs:id/cc0"
+                                                                          class="android.widget.FrameLayout"
+                                                                          package="com.xingin.xhs" content-desc=""
+                                                                          checkable="false" checked="false"
+                                                                          clickable="false" enabled="true"
+                                                                          focusable="false" focused="false"
+                                                                          scrollable="false" long-clickable="false"
+                                                                          password="false" selected="false"
+                                                                          bounds="[0,237][1080,1677]"/>
+                                                                </node>
+                                                            </node>
+                                                        </node>
+                                                        <node index="2" text="" resource-id="com.xingin.xhs:id/gcj"
+                                                              class="android.widget.LinearLayout"
+                                                              package="com.xingin.xhs" content-desc="" checkable="false"
+                                                              checked="false" clickable="false" enabled="true"
+                                                              focusable="false" focused="false" scrollable="false"
+                                                              long-clickable="false" password="false" selected="false"
+                                                              bounds="[0,237][1080,500]"/>
+                                                    </node>
+                                                    <node index="2" text="" resource-id=""
+                                                          class="android.widget.LinearLayout" package="com.xingin.xhs"
+                                                          content-desc="" checkable="false" checked="false"
+                                                          clickable="false" enabled="true" focusable="false"
+                                                          focused="false" scrollable="false" long-clickable="false"
+                                                          password="false" selected="false"
+                                                          bounds="[493,1724][586,1737]">
+                                                        <node index="3" text="" resource-id=""
+                                                              class="android.widget.ImageView" package="com.xingin.xhs"
+                                                              content-desc="" checkable="false" checked="false"
+                                                              clickable="false" enabled="true" focusable="false"
+                                                              focused="false" scrollable="false" long-clickable="false"
+                                                              password="false" selected="false"
+                                                              bounds="[496,1727][503,1734]"/>
+                                                        <node index="4" text="" resource-id=""
+                                                              class="android.widget.ImageView" package="com.xingin.xhs"
+                                                              content-desc="" checkable="false" checked="false"
+                                                              clickable="false" enabled="true" focusable="false"
+                                                              focused="false" scrollable="false" long-clickable="false"
+                                                              password="false" selected="false"
+                                                              bounds="[513,1724][526,1737]"/>
+                                                        <node index="5" text="" resource-id=""
+                                                              class="android.widget.ImageView" package="com.xingin.xhs"
+                                                              content-desc="" checkable="false" checked="false"
+                                                              clickable="false" enabled="true" focusable="false"
+                                                              focused="false" scrollable="false" long-clickable="false"
+                                                              password="false" selected="false"
+                                                              bounds="[533,1724][546,1737]"/>
+                                                        <node index="6" text="" resource-id=""
+                                                              class="android.widget.ImageView" package="com.xingin.xhs"
+                                                              content-desc="" checkable="false" checked="false"
+                                                              clickable="false" enabled="true" focusable="false"
+                                                              focused="false" scrollable="false" long-clickable="false"
+                                                              password="false" selected="false"
+                                                              bounds="[553,1724][566,1737]"/>
+                                                        <node index="7" text="" resource-id=""
+                                                              class="android.widget.ImageView" package="com.xingin.xhs"
+                                                              content-desc="" checkable="false" checked="false"
+                                                              clickable="false" enabled="true" focusable="false"
+                                                              focused="false" scrollable="false" long-clickable="false"
+                                                              password="false" selected="false"
+                                                              bounds="[573,1724][586,1737]"/>
+                                                    </node>
+                                                </node>
+                                            </node>
+                                            <node index="1" text="" resource-id="" class="android.widget.FrameLayout"
+                                                  package="com.xingin.xhs" content-desc="" checkable="false"
+                                                  checked="false" clickable="false" enabled="true" focusable="false"
+                                                  focused="false" scrollable="false" long-clickable="false"
+                                                  password="false" selected="false" bounds="[0,1750][1080,2358]">
+                                                <node index="0" text="" resource-id="com.xingin.xhs:id/dkl"
+                                                      class="android.widget.LinearLayout" package="com.xingin.xhs"
+                                                      content-desc="" checkable="false" checked="false"
+                                                      clickable="false" enabled="true" focusable="false" focused="false"
+                                                      scrollable="false" long-clickable="false" password="false"
+                                                      selected="false" bounds="[0,1750][1080,2358]">
+                                                    <node index="0" text="" resource-id=""
+                                                          class="android.widget.LinearLayout" package="com.xingin.xhs"
+                                                          content-desc="" checkable="false" checked="false"
+                                                          clickable="false" enabled="true" focusable="false"
+                                                          focused="false" scrollable="false" long-clickable="false"
+                                                          password="false" selected="false"
+                                                          bounds="[0,1763][1080,2358]">
+                                                        <node index="0" text="如何开启小米mix fold3的usb拷贝文件功能"
+                                                              resource-id="com.xingin.xhs:id/g45"
+                                                              class="android.widget.TextView" package="com.xingin.xhs"
+                                                              content-desc="" checkable="false" checked="false"
+                                                              clickable="false" enabled="true" focusable="true"
+                                                              focused="false" scrollable="false" long-clickable="true"
+                                                              password="false" selected="false"
+                                                              bounds="[39,1776][1041,1827]"/>
+                                                        <node index="1"
+                                                              text="研究了半天，终于找到了。&#10;1. 开启设置，找到我的设备&#10;2. 点击全部参数与信息&#10;3. 连着点击miu版本，下方会有提示信息&#10;4. 开启开发者功能&#10;5. 然后再去设置里，会多一个开发者选项，点进去&#10;6. 其他不要动，找到默认usb配置，把仅限充电改成传输文件，退出就能往手机里面copy文件了&#10;7. 运行手机管家一次，默认就会把开发者模式关闭&#10;&#9;&#10;#小米手机 #mix fold3#手机设置#手机开发者模式#usb mtp"
+                                                              resource-id="com.xingin.xhs:id/dl6"
+                                                              class="android.widget.TextView" package="com.xingin.xhs"
+                                                              content-desc="" checkable="false" checked="false"
+                                                              clickable="false" enabled="true" focusable="true"
+                                                              focused="false" scrollable="false" long-clickable="true"
+                                                              password="false" selected="false"
+                                                              bounds="[39,1853][1041,2358]"/>
+                                                    </node>
+                                                </node>
+                                            </node>
+                                        </node>
+                                    </node>
+                                    <node index="4" text="" resource-id="com.xingin.xhs:id/c10"
+                                          class="android.widget.FrameLayout" package="com.xingin.xhs" content-desc=""
+                                          checkable="false" checked="false" clickable="false" enabled="true"
+                                          focusable="false" focused="false" scrollable="false" long-clickable="false"
+                                          password="false" selected="false" bounds="[0,2211][1080,2358]">
+                                        <node index="0" text="" resource-id="com.xingin.xhs:id/c11"
+                                              class="android.view.ViewGroup" package="com.xingin.xhs" content-desc=""
+                                              checkable="false" checked="false" clickable="true" enabled="true"
+                                              focusable="true" focused="false" scrollable="false" long-clickable="false"
+                                              password="false" selected="false" bounds="[0,2211][1080,2358]">
+                                            <node index="0" text="说点什么..." resource-id="com.xingin.xhs:id/dqv"
+                                                  class="android.widget.TextView" package="com.xingin.xhs"
+                                                  content-desc="评论框" checkable="false" checked="false" clickable="true"
+                                                  enabled="true" focusable="true" focused="false" scrollable="false"
+                                                  long-clickable="false" password="false" selected="false"
+                                                  bounds="[39,2237][609,2332]"/>
+                                            <node index="1" text="" resource-id="com.xingin.xhs:id/g39"
+                                                  class="android.widget.Button" package="com.xingin.xhs"
+                                                  content-desc="点赞 30" checkable="false" checked="false"
+                                                  clickable="true" enabled="true" focusable="true" focused="false"
+                                                  scrollable="false" long-clickable="false" password="false"
+                                                  selected="false" bounds="[641,2211][770,2358]">
+                                                <node index="0" text="" resource-id="com.xingin.xhs:id/g37"
+                                                      class="android.widget.ImageView" package="com.xingin.xhs"
+                                                      content-desc="" checkable="false" checked="false"
+                                                      clickable="false" enabled="true" focusable="false" focused="false"
+                                                      scrollable="false" long-clickable="false" password="false"
+                                                      selected="false" bounds="[641,2211][770,2353]"/>
+                                                <node index="1" text="30" resource-id="com.xingin.xhs:id/g3_"
+                                                      class="android.widget.TextView" package="com.xingin.xhs"
+                                                      content-desc="" checkable="false" checked="false"
+                                                      clickable="false" enabled="true" focusable="false" focused="false"
+                                                      scrollable="false" long-clickable="false" password="false"
+                                                      selected="false" bounds="[728,2261][770,2307]"/>
+                                            </node>
+                                            <node index="2" text="" resource-id="com.xingin.xhs:id/g1f"
+                                                  class="android.widget.Button" package="com.xingin.xhs"
+                                                  content-desc="收藏 15" checkable="false" checked="false"
+                                                  clickable="true" enabled="true" focusable="true" focused="false"
+                                                  scrollable="false" long-clickable="false" password="false"
+                                                  selected="false" bounds="[791,2232][913,2337]">
+                                                <node index="0" text="" resource-id="com.xingin.xhs:id/g1e"
+                                                      class="android.widget.ImageView" package="com.xingin.xhs"
+                                                      content-desc="" checkable="false" checked="false"
+                                                      clickable="false" enabled="true" focusable="false" focused="false"
+                                                      scrollable="false" long-clickable="false" password="false"
+                                                      selected="false" bounds="[791,2245][870,2324]"/>
+                                                <node index="1" text="15" resource-id="com.xingin.xhs:id/g1g"
+                                                      class="android.widget.TextView" package="com.xingin.xhs"
+                                                      content-desc="" checkable="false" checked="false"
+                                                      clickable="false" enabled="true" focusable="false" focused="false"
+                                                      scrollable="false" long-clickable="false" password="false"
+                                                      selected="false" bounds="[878,2261][913,2307]"/>
+                                            </node>
+                                            <node index="3" text="" resource-id="com.xingin.xhs:id/g1l"
+                                                  class="android.widget.Button" package="com.xingin.xhs"
+                                                  content-desc="评论 2" checkable="false" checked="false" clickable="true"
+                                                  enabled="true" focusable="true" focused="false" scrollable="false"
+                                                  long-clickable="false" password="false" selected="false"
+                                                  bounds="[934,2232][1041,2337]">
+                                                <node index="0" text="" resource-id="" class="android.widget.ImageView"
+                                                      package="com.xingin.xhs" content-desc="" checkable="false"
+                                                      checked="false" clickable="false" enabled="true" focusable="false"
+                                                      focused="false" scrollable="false" long-clickable="false"
+                                                      password="false" selected="false" bounds="[934,2245][1013,2324]"/>
+                                                <node index="1" text="2" resource-id="com.xingin.xhs:id/g1p"
+                                                      class="android.widget.TextView" package="com.xingin.xhs"
+                                                      content-desc="" checkable="false" checked="false"
+                                                      clickable="false" enabled="true" focusable="false" focused="false"
+                                                      scrollable="false" long-clickable="false" password="false"
+                                                      selected="false" bounds="[1021,2261][1041,2307]"/>
+                                            </node>
+                                        </node>
+                                    </node>
+                                </node>
+                            </node>
+                        </node>
+                    </node>
+                </node>
+            </node>
+        </node>
+        <node index="1" text="" resource-id="android:id/navigationBarBackground" class="android.view.View"
+              package="com.xingin.xhs" content-desc="" checkable="false" checked="false" clickable="false"
+              enabled="true" focusable="false" focused="false" scrollable="false" long-clickable="false"
+              password="false" selected="false" bounds="[0,2358][1080,2400]"/>
+    </node>
+</hierarchy>
