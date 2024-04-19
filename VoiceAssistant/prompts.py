@@ -30,8 +30,8 @@ A simple use case can be swipe(21, "up", "medium"), which swipes up the UI eleme
 medium distance.
 Specifically, if you want to swipe the whole page for scanning, the first parameter should be -1. A case can be swipe(-1, "up", "medium"),
 which swipes up the whole page for a medium distance.
-The task you need to complete is to <task_description>.Your past actions to proceed with this task are summarized as 
-follows: <last_act>
+The task you need to complete is to <task_description>.The historical interactions between you and the phone to proceed with this task are summarized as 
+follows(The historical interactions are recorded in an array in order.The "desciption" attribute of each of these elements is an interpretation of the page at that time and the "your_action" attribute is the action you did at that time): <context>
 Now, given the following labeled screenshot, you need to think and call the function needed to 
 proceed with the task. Your output should include three parts in the given format:
 Observation: <Describe what you observe in the image>
@@ -42,3 +42,6 @@ in this field.>
 Summary: <Summarize your past actions along with your latest action in one or two sentences. Do not include the numeric 
 tag in your summary>
 You can only take one action at a time, so please directly call the function."""
+
+observer_template = ""
+checker_template = ""
