@@ -7,10 +7,9 @@ MIN_DIS = 30
 
 
 class AndroidElement:
-    def __init__(self, uid, bbox, attrib):
+    def __init__(self, uid, bbox):
         self.uid = uid
         self.bbox = bbox
-        self.attrib = attrib
 
 
 def get_domtree(save_path):
@@ -52,12 +51,13 @@ def get_id_from_element(elem):
     return elem_id
 
 
-def traverse_tree(xml_path, elem_list, attrib):
+def traverse_tree(xml_path, elem_list, text_list, content_list):
     path = []
     for event, elem in ET.iterparse(xml_path, ['start', 'end']):
         if event == 'start':
             path.append(elem)
-            if attrib in elem.attrib and elem.attrib[attrib] == "true":
+            if "clickable" in elem.attrib and elem.attrib["clickable"] == "true" or \
+                    "long-clickable" in elem.attrib and elem.attrib["long-clickable"] == "true":
                 parent_prefix = ""
                 if len(path) > 1:
                     parent_prefix = get_id_from_element(path[-2])
@@ -66,20 +66,12 @@ def traverse_tree(xml_path, elem_list, attrib):
                 x2, y2 = map(int, bounds[1].split(","))
                 if x1 == x2 or y1 == y2:
                     continue
-                # if y1 == 0:
-                #     y1 = 140
-                # if y1 == 2199:
-                #     y1 = 2339
-                # if y2 == 0:
-                #     y2 = 140
-                # if y2 == 2199:
-                #     y2 = 2339
                 center = (x1 + x2) // 2, (y1 + y2) // 2
                 elem_id = get_id_from_element(elem)
                 if parent_prefix:
                     elem_id = parent_prefix + "_" + elem_id
                 elem_id += f"_{elem.attrib['index']}"
-                close = False
+                # close = False
                 # for e in elem_list:
                 #     bbox = e.bbox
                 #     center_ = (bbox[0][0] + bbox[1][0]) // 2, (bbox[0][1] + bbox[1][1]) // 2
@@ -87,8 +79,16 @@ def traverse_tree(xml_path, elem_list, attrib):
                 #     if dist <= MIN_DIS:
                 #         close = True
                 #         break
-                if not close:
-                    elem_list.append(AndroidElement(elem_id, ((x1, y1), (x2, y2)), attrib))
+                elem_list.append(AndroidElement(elem_id, ((x1, y1), (x2, y2))))
+                if "text" in elem.attrib:
+                    text_list.append(elem.attrib["text"])
+                else:
+                    text_list.append("")
+                if "content-desc" in elem.attrib:
+                    content_list.append(elem.attrib["content-desc"])
+                else:
+                    content_list.append("")
+
 
         if event == 'end':
             path.pop()

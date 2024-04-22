@@ -45,7 +45,9 @@ def draw_bbox_multi(img_path, elem_list, output_path):
                           text_RGB=text_color, alpha=0.3)
         count += 1
     cv2.imwrite(output_path, img)
-
-elem_list = []
-controller.traverse_tree("./xml/domtree.xml", elem_list, "clickable")
-draw_bbox_multi("./screenshots/screen.png", elem_list, "./labeled/labeled.png")
+if __name__ == "__main__":
+    elem_list = []
+    text_list = []
+    content_list = []
+    controller.traverse_tree("./xml/domtree.xml", elem_list, text_list, content_list)
+    draw_bbox_multi("./screenshots/screen.png", elem_list, "./labeled/labeled.png")

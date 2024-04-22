@@ -40,6 +40,7 @@ def inference_chat(chat, API_TOKEN):
         try:
             res = requests.post(api_url, headers=headers, json=data)
             res = res.json()['choices'][0]['message']['content']
+            print()
             print(res)
         except:
             print("Network Error:")
@@ -50,7 +51,7 @@ def inference_chat(chat, API_TOKEN):
 
 def parse_explore_rsp(rsp):
     try:
-        observation = re.findall(r"Observation: (.*?)$", rsp, re.MULTILINE)[0]
+        # observation = re.findall(r"Observation: (.*?)$", rsp, re.MULTILINE)[0]
         think = re.findall(r"Thought: (.*?)$", rsp, re.MULTILINE)[0]
         act = re.findall(r"Action: (.*?)$", rsp, re.MULTILINE)[0]
         last_act = re.findall(r"Summary: (.*?)$", rsp, re.MULTILINE)[0]
