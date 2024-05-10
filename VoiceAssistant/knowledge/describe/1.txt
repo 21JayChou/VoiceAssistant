@@ -1,0 +1,5 @@
+{
+'19':{'appearance':'Element with text "配送时效" in it and an icon is to the left of the text', 'text':'配送时效', 'function':'This element is used to screen items that can be delivered to the destination within a certain time frame.'},
+'24':{'appearance':'Element only with text "销量" in it.', 'text':'销量', 'function':'This element is used to change the order of the items on the current page so that they are listed by sales volume from high to low.'},
+'25':{'appearance':'Element with text "价格" in it and an up-down arrow is to the right of the text','text':'价格','function':'This element is used to change the order of the items on the current page so that they are listed by price from low to high or from high to low.'}
+}

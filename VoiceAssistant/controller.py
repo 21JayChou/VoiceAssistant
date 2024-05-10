@@ -1,4 +1,5 @@
 import os
+import re
 import time
 import xml.etree.ElementTree as ET
 import subprocess
@@ -7,9 +8,9 @@ MIN_DIS = 30
 
 
 class AndroidElement:
-    def __init__(self, uid, bbox):
-        self.uid = uid
+    def __init__(self, bbox):
         self.bbox = bbox
+        self.text = ""
 
 
 def get_domtree(save_path):
@@ -28,90 +29,60 @@ def get_screenshot(save_path):
     return save_path
 
 
-def get_id_from_element(elem):
-    bounds = elem.attrib["bounds"][1:-1].split("][")
-    x1, y1 = map(int, bounds[0].split(","))
-    # if y1 == 0:
-    #     y1 = 140
-    # if y1 == 2199:
-    #     y1 = 2339
-    x2, y2 = map(int, bounds[1].split(","))
-    # if y2 == 0:
-    #     y2 = 140
-    # if y2 == 2199:
-    #     y2 = 2339
-    elem_w, elem_h = x2 - x1, y2 - y1
-    if "resource-id" in elem.attrib and elem.attrib["resource-id"]:
-        elem_id = elem.attrib["resource-id"].replace(":", ".").replace("/", "_")
-    else:
-        elem_id = f"{elem.attrib['class']}_{elem_w}_{elem_h}"
-    if "content-desc" in elem.attrib and elem.attrib["content-desc"] and len(elem.attrib["content-desc"]) < 20:
-        content_desc = elem.attrib['content-desc'].replace("/", "_").replace(" ", "").replace(":", "_")
-        elem_id += f"_{content_desc}"
-    return elem_id
+def none_children_clickable(root:ET.Element):
+    for child in root:
+        if child.attrib["clickable"] == "true":
+            return False
+        if not none_children_clickable(child):
+            return False
+    return True
+
+def converge_text(root:ET.Element, android_element:AndroidElement, pre = None):
+    if root.attrib['text'] != "" and root.attrib['text'] != pre:
+        android_element.text += root.attrib['text'] + ','
+        pre = root.attrib['text']
+    if root.attrib['content-desc'] != "" and root.attrib['content-desc'] != pre:
+        android_element.text += root.attrib['content-desc'] + ','
+        pre = root.attrib['content-desc']
+
+    for child in root:
+        converge_text(child, android_element, pre)
+
+def traverse_root(root:ET.Element, elem_list=[]):
+    for child in root:
+        flag = child.attrib['class'] == "android.widget.FrameLayout"
+        if flag and child.attrib["clickable"] == "true" and none_children_clickable(child) or (not flag and child.attrib["clickable"] == "true"):
+            bounds = child.attrib["bounds"][1:-1].split("][")
+            x1, y1 = map(int, bounds[0].split(","))
+            x2, y2 = map(int, bounds[1].split(","))
+            if x1 != x2 and y1 != y2:
+                android_element = AndroidElement(((x1, y1), (x2, y2)))
+                converge_text(child, android_element)
+                android_element.text = android_element.text[:-1]
+                elem_list.append(android_element)
+        traverse_root(child, elem_list)
+
+def traverse_tree(xml_path, elem_list=[], text_function_dic={}):
+    root = ET.ElementTree(file=xml_path).getroot()
+    traverse_root(root, elem_list)
+    for i, elem in enumerate(elem_list):
+        # elem.text =  elem.text.replace('\xa0', ' ').replace('\ue608', ' ').replace('\u200b', "")
+        elem.text = replace_unicode_escapes(elem.text)
+        text_function_dic[str(i+1)] = {'text': elem.text, 'function': ""}
 
 
-def traverse_tree(xml_path, elem_list, text_list, content_list):
-    path = []
-    for event, elem in ET.iterparse(xml_path, ['start', 'end']):
-        if event == 'start':
-            path.append(elem)
-            if "clickable" in elem.attrib and elem.attrib["clickable"] == "true" or \
-                    "long-clickable" in elem.attrib and elem.attrib["long-clickable"] == "true":
-                parent_prefix = ""
-                if len(path) > 1:
-                    parent_prefix = get_id_from_element(path[-2])
-                bounds = elem.attrib["bounds"][1:-1].split("][")
-                x1, y1 = map(int, bounds[0].split(","))
-                x2, y2 = map(int, bounds[1].split(","))
-                if x1 == x2 or y1 == y2:
-                    continue
-                center = (x1 + x2) // 2, (y1 + y2) // 2
-                elem_id = get_id_from_element(elem)
-                if parent_prefix:
-                    elem_id = parent_prefix + "_" + elem_id
-                elem_id += f"_{elem.attrib['index']}"
-                # close = False
-                # for e in elem_list:
-                #     bbox = e.bbox
-                #     center_ = (bbox[0][0] + bbox[1][0]) // 2, (bbox[0][1] + bbox[1][1]) // 2
-                #     dist = (abs(center[0] - center_[0]) ** 2 + abs(center[1] - center_[1]) ** 2) ** 0.5
-                #     if dist <= MIN_DIS:
-                #         close = True
-                #         break
-                elem_list.append(AndroidElement(elem_id, ((x1, y1), (x2, y2))))
-                if "text" in elem.attrib:
-                    text_list.append(elem.attrib["text"])
-                else:
-                    text_list.append("")
-                if "content-desc" in elem.attrib:
-                    content_list.append(elem.attrib["content-desc"])
-                else:
-                    content_list.append("")
+def replace_unicode_escapes(text):
+    def replace(match):
+        code_point = match.group(1)
+        return chr(int(code_point, 16))
 
 
-        if event == 'end':
-            path.pop()
-        i = 1
+    # 替换Unicode转义序列
+    text = re.sub(r'\\u([0-9a-fA-F]{4})', replace, text)
+    # 替换\xa0
+    text = re.sub(r'\\x([0-9a-fA-F]{2})', lambda m: chr(int(m.group(1), 16)), text)
 
-
-def merge_list(clickable_list, focusable_list):
-    elem_list = clickable_list.copy()
-    for elem in focusable_list:
-        bbox = elem.bbox
-        center = (bbox[0][0] + bbox[1][0]) // 2, (bbox[0][1] + bbox[1][1]) // 2
-        close = False
-        for e in clickable_list:
-            bbox = e.bbox
-            center_ = (bbox[0][0] + bbox[1][0]) // 2, (bbox[0][1] + bbox[1][1]) // 2
-            dist = (abs(center[0] - center_[0]) ** 2 + abs(center[1] - center_[1]) ** 2) ** 0.5
-            if dist <= MIN_DIS:
-                close = True
-                break
-        if not close:
-            elem_list.append(elem)
-    return elem_list
-
+    return text
 
 def tap(x, y):
     try:
@@ -127,6 +98,13 @@ def back():
         print("back error!")
     time.sleep(2)
 
+def home():
+    try:
+        os.system("adb  shell input keyevent KEYCODE_HOME")
+    except:
+        print("home error!")
+    time.sleep(2)
+
 def text(input_str):
     input_str = input_str.replace(" ", "%s")
     input_str = input_str.replace("'", "")
@@ -136,7 +114,7 @@ def text(input_str):
         print("text error!")
     time.sleep(2)
 
-def long_press(self, x, y, duration=1000):
+def long_press(x, y, duration=1000):
     try:
         os.system(f"adb shell input swipe {x} {y} {x} {y} {duration}")
     except:
@@ -166,6 +144,15 @@ def swipe(x, y, direction, width,dist="medium"):
         print("swipe error!")
     time.sleep(2)
 
+def swipe_precise(start, end, duration=400):
+    start_x, start_y = start
+    end_x, end_y = end
+    try:
+        os.system(f"adb shell input swipe { start_x} {start_y} {end_x} {end_y} {duration}")
+    except:
+        print("swipe error!")
+    time.sleep(2)
+
 
 def get_device_size():
     adb_command = f"adb shell wm size"
@@ -174,4 +161,7 @@ def get_device_size():
     return map(int, result.split(": ")[2].split("x"))
 
 if __name__ == "__main__":
-    swipe(540,1200,"up",1080)
+    elem_list = []
+    text_function_dict = {}
+    traverse_tree('./xml/domtree_2.xml',elem_list, text_function_dict)
+    print(str(text_function_dict))

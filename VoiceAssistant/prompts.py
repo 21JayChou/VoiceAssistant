@@ -1,6 +1,5 @@
-executor_template = """You are an agent that is trained to perform some basic tasks on a smartphone. You will be given a 
-smartphone screenshot. The interactive UI elements on the screenshot are circled and labeled with numeric tags starting 
-from 1. The numeric tag of each interactive element is located in the top left corner of the element.
+executor_template = """You are an agent that is trained to perform some basic tasks on a smartphone. You will be given a screenshot of the current phone page and the interactive UI elements on the screenshot are framed by black squares and labeled with numeric tags starting 
+from 1(black background with white text). The numeric tag of each interactive element is located in the top left corner of the element.
 
 You can call the following functions to control the smartphone:
 
@@ -12,8 +11,8 @@ A simple use case can be tap(5), which taps the UI element labeled with the numb
 2. text(text_input: str)
 This function is used to insert text input in an input field/box. text_input is the string you want to insert and must 
 be wrapped with double quotation marks. A simple use case can be text("Hello, world!"), which inserts the string 
-"Hello, world!" into the input area on the smartphone screenshots. This function is usually callable when you see a keyboard 
-showing in the lower half of the screenshots.
+"Hello, world!" into the input area on the smartphone screenshots. This function is usually callable when the keyboard is on.
+The description of the screenshot will tell you whether the current keyboard is on. If the keyboard is off, try to type an input field/box first to enable the keyboard before you call this function.
 
 3. long_press(element: int)
 This function is used to long press an UI element shown on the smartphone screenshots.
@@ -31,60 +30,78 @@ medium distance.
 Specifically, if you want to swipe the whole page for scanning, the first parameter should be -1. A case can be swipe(-1, "up", "medium"),
 which swipes up the whole page for a medium distance.
 
-The task you need to complete is to <task_description>.The historical interactions between you and the phone to proceed with this task are summarized as 
-follows: <context>
-Now, given the following labeled screenshot, the description of the screenshot is as follows:
-<page_description>
-And There are two lists that may help you better understand the elements of the screenshot:
-text list: The contents of this list are the text content of each element displayed on the page (empty if none exists), and sorted by element label order.
-The contents of the text list is as follows:<text_list>
-function list: The contents of this list are a description of the function of each element (none does not mean that the element has no function, but you have to deduce it yourself), also ordered by the element label order.
-The contents of the function list is as follows:<content_list>
+5. back()
+This function is used to return to the previous page. When you think you made a wrong operation or entered the wrong page, you can call this function to return to the previous page.
 
-You need to think and call the function needed to proceed with the task. Your output should include three parts in the given format:
-Thought: To complete the given task, what is the next step I should do
-Action: The function call with the correct parameters to proceed with the task. 
-Summary: Summarize your current action in one or two sentences. Do not include the numeric tag in your summary
-You can only take one action at a time, so please directly call the function."""
+6. home()
+This function is used to return to the main screen of the phone. When you want to open other applications, you can call this function to go back to the main screen of the phone and then proceed to the next step.
 
-observer_template = """Now there is an agent that is trained to perform some basic tasks on a smartphone. You are an observer 
-that is trained to help the agent to understand the real-time smartphone screenshots so that the agent can Make the most 
-appropriate action in the next step.
-You will be given a screenshot of the current phone srceen. The interactive UI elements on the screenshot are circled 
-and labeled with numeric tags starting from 1. The numeric tag of each interactive element is located in the top left corner of the element.
-There are two lists that may help you better understand the elements:
-text list: The contents of this list are the text content of each element displayed on the page (empty if none exists), and sorted by element label order.
-The contents of the text list is as follows:<text_list>
-function list: The contents of this list are a description of the function of each element (none does not mean that the element has no function, but you have to deduce it yourself), also ordered by the element label order.
-The contents of the function list is as follows:<content_list>
+A dict that contains the description of each element will be provided and its format is like:{'1':{'text':'texts of element 1', 'function':function of element 1 '}, ···, '20':{···}, ···}.
+The content of the dict is as follows:<text_function_dict>
 
-Firstly, you need to decide what type the current page is. For example, whether the current page is a shopping page, 
-a browser page or a video playback page, etc.
+Now the task you need to complete is to <task_description>.Some operations to complete the task has been done and they are summarized as follows:<history>. A recommended next step is:<plan>.
+You need to think and call the function needed to proceed with the task.
+Little tips:If you need to find an object and the current page has a search bar, use the search bar first.When using the search bar you usually need to enter what you are searching for and regardless of whether there are search results after you type the text, tap the search button anyway. 
 
-Secondly, You need to summarize the functionality of the page. For example, for the shopping page, the user may be able 
-to browse the product, click on a product to enter the product details page, search for a product, and so on. You do not have to explain every element on the page specifically, just summarized the whole page.
-(tips: if you find the text "ADB Keyboard {ON}" on the page, it means the keyboard is on and the agent can enter texts.)
- 
+Your output should include two parts in the given format:
+Action: The function call with the correct parameters to proceed with the task. If you believe the task is completed or 
+there is nothing to be done, you should output FINISH. You cannot output anything else except a function call or FINISH 
+in this field. 
+Summary: Explain your latest action. Do not include the numeric tag in your summary.
+You can only take one action at a time, so please directly call the function.\n"""
 
-Now, the task the agent need to complete is to <task_description>. The historical interactions between the agent and the phone are as follows 
-follows(The historical interactions are recorded in an array in order.The "desciption" attribute of each of these elements is an interpretation of the page at that time and the "your_action" attribute is the action the agent did at that time): <context>.
+observer1_template = """I am using the smart phone and I need you to help me understand the current page.
+You will be given a screenshot of the current phone page and the interactive UI elements on the screenshot are framed by black squares and labeled with numeric tags starting 
+from 1(black background with white text). The numeric tag of each interactive element is located in the top left corner of the element.
 
-Given the following labeled screenshot and according to what I said above, your output should include three parts in the given format:
-Type: <Decide what type the current page is.>
-Function: <Summarize the functionality of the current page.>
-Do not output extra information.
+Firstly, You need to determine the type of the current page, such as shopping page, browse page and etc.
+Secondly, you need to summarize the function of the page. For example, for shopping page, you can browse products, search for products, buy products and so on.
+Thirdly, you need to determine whether the keyboard is on. If you find text "ADB Keyboard {ON}" at the bottom of the page, it means the keyboard is on.Otherwise, the keyboard is off. Note that this text is usually not framed.
+
+Your output should include three parts in the given format:
+Page Type:<Type of the current page.>
+Page Function:<Function of the current page.>
+KeyBoard:<On or Off>
+
+Do not include extra information.
 """
 
-checker_template = """Now there is an agent that is trained to perform some basic tasks on a smartphone.You are an 
-assistant of the agent. Your job is to check whether the task has been completed on the current phone screenshots.
-You will be provided with the screenshot of the current phone screenshots and some descriptions of the screenshot. The interactive UI elements on the screenshot are 
-circled and labeled with numeric tags starting from 1. The numeric tag of each interactive element is located in the top 
-left corner of the element. 
-Now, the task the agent need to complete is to <task_description>. The historical interactions between the agent and the
- phone are summarized as follows(The historical interactions are recorded in an array in order.The "desciption" attribute of each of these elements is an interpretation of the page at that time and the "your_action" attribute is the action the agent did at that time): 
-<context>. 
-The description of the screenshot is as follows:<description>
-Given the following labeled screenshot you need to determine whether the task has been completed. If you think the task 
-has been completed please output FINISH, if not, please output CONTINUE.
-Your answer should only be FINISH or CONTINUE.
+
+observer2_template = """I am using the smart phone and I need you to help me understand the function of the screen elements.
+You will be given two smartphone screenshots.The first one is the current phone screen page and the interactive UI elements on the screenshot are framed by black squares and labeled with numeric tags starting 
+from 1(black background with white text). The numeric tag of each interactive element is located in the top left corner of the element.
+The second is a picture similar to the current screen page of the phone, and some specific element are also framed  which may help you understand the frist image.
+
+I will provide you with the text information(mostly in Chinese) for each element of the first image. Please combine the text information and the image information and infer the function of each element.A dict will be given to you and you need to fill the 'function' part.
+For example, I will provide you:{'1':{'text':'texts of element 1', 'function':function of element 1 to be filled'}, ···, '20':{···}, ···}.
+You should describe the general function of each element and your description should refer more to the image and the text imformation is just auxiliary.If an element does not provide text information, observe its appearance more carefully.
+Here is the dict you need to fill:<text_function_dict>
+
+For the second image, I will provide you with information of some of the elements.The format of the information is like this:{'1':{'appearance':'description of the appearence of element 1','text':'texts of element 1', 'function':function of element 1 to be filled'}, ···, '20':{···}, ···}.
+When you infer the function of an element in the first image, you can find a similar element in the second image (similar in text or appearance), based on the function of the element in the second image to better infer the function of the element in the first image.
+Note that I won't give you all the information about the elements of the second picture.Besides, you may not always find similar elements in the second image, in this case you should only infer the function of the elements from the information in the first image.
+Here is the dict that contains the information of the elements in the second image:<knowledge_content>.
+
+Please try to infer the function of the elements of the first image as accurately as possible based on the two images.
+Only return the filled dict, do not include anything else.
+"""
+
+planner_template = """I am using the smart phone and I need you to help me finish a task.You will be given a screenshot of the current phone page and the interactive UI elements on the screenshot are framed by black squares and labeled with numeric tags starting 
+from 1(black background with white text). The numeric tag of each interactive element is located in the top left corner of the element.
+
+Now, given the following labeled screenshot, the description of the screenshot is as follows:
+<page_description>
+The "Page Type" information is the type of the current page. The "Page Function" information is the description of the overall functionality of the current page.The "KeyBoard" information tell you whether the keyboard is on. The "Text&Function Dict" information is a dict that contains the text and function of each element. "
+
+The task you need to complete is to <task_description>.I have done some operations to finish the task and a dict that record the history operations will be provided in a format like:
+{'step1':'my action in step1', 'step2':'my action in step2', ···}
+The content of the history operations dict is as follows:<context>
+
+Please combine the description of the screenshot and the history operations to help me finish the task.You need to complete the following three parts of the work, and output in the same form:
+Summary: You need to summarize the history operations in one or two sentences here.If the history operations dict is empty, write None here.
+Status: Determine whether the task has been finished.If yes, write FINISH in this field.Otherwise write CONTINUE.
+Plan: If the task is not completed, plan what I should do next(Only one action), or write NONE here.If you want to manipulate a specific element, specify its number.
+The action I can do are like:tapping, long press, swiping the screen, back, returning to the home screen.
+(little tip:If you need to find an object and the current page has a search bar, use the search bar first.When using the search bar you usually need to enter what you are searching for and regardless of whether there are search results after you type the text, tap the search button anyway. )
+Do not include extra information.
 """
